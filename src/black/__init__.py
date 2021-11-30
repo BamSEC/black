@@ -1277,6 +1277,7 @@ def patch_click() -> None:
 
 
 def patched_main() -> None:
+    print(" ===== RUNNING CUSTOM BLACK ===== ", file=sys.stderr, flush=True)
     maybe_install_uvloop()
     freeze_support()
     patch_click()

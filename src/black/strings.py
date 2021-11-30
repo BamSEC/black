@@ -136,31 +136,39 @@ def normalize_string_prefix(s: str, remove_u_prefix: bool = False) -> str:
     match = re.match(r"^([" + STRING_PREFIX_CHARS + r"]*)(.*)$", s, re.DOTALL)
     assert match is not None, f"failed to match string {s!r}"
     orig_prefix = match.group(1)
-    new_prefix = orig_prefix.replace("F", "f").replace("B", "b").replace("U", "u")
+    new_prefix = (
+        orig_prefix.replace("F", "f").replace("B", "b").replace("U", "u")
+    )
     if remove_u_prefix:
         new_prefix = new_prefix.replace("u", "")
     return f"{new_prefix}{match.group(2)}"
 
 
 def normalize_string_quotes(s: str) -> str:
-    """Prefer double quotes but only if it doesn't cause more escaping.
+    """Prefer single quotes for strings, and double quotes for docstrings,
+    but only if it doesn't cause more escaping.
 
     Adds or removes backslashes as appropriate. Doesn't parse and fix
     strings nested in f-strings.
     """
+    good_docquote = '"""'
+    bad_docquote = "'''"
+    good_quote = "'"
+    bad_quote = '"'
+
     value = s.lstrip(STRING_PREFIX_CHARS)
-    if value[:3] == '"""':
+    if value[:3] == good_docquote:
         return s
 
-    elif value[:3] == "'''":
-        orig_quote = "'''"
-        new_quote = '"""'
-    elif value[0] == '"':
-        orig_quote = '"'
-        new_quote = "'"
+    elif value[:3] == bad_docquote:
+        orig_quote = bad_docquote
+        new_quote = good_docquote
+    elif value[0] == good_quote:
+        orig_quote = good_quote
+        new_quote = bad_quote
     else:
-        orig_quote = "'"
-        new_quote = '"'
+        orig_quote = bad_quote
+        new_quote = good_quote
     first_quote_pos = s.find(orig_quote)
     if first_quote_pos == -1:
         return s  # There's an internal error
@@ -185,8 +193,12 @@ def normalize_string_quotes(s: str) -> str:
             # Consider the string without unnecessary escapes as the original
             body = new_body
             s = f"{prefix}{orig_quote}{body}{orig_quote}"
-        new_body = sub_twice(escaped_orig_quote, rf"\1\2{orig_quote}", new_body)
-        new_body = sub_twice(unescaped_new_quote, rf"\1\\{new_quote}", new_body)
+        new_body = sub_twice(
+            escaped_orig_quote, rf"\1\2{orig_quote}", new_body
+        )
+        new_body = sub_twice(
+            unescaped_new_quote, rf"\1\\{new_quote}", new_body
+        )
     if "f" in prefix.casefold():
         matches = re.findall(
             r"""
@@ -202,15 +214,15 @@ def normalize_string_quotes(s: str) -> str:
                 # Do not introduce backslashes in interpolated expressions
                 return s
 
-    if new_quote == '"""' and new_body[-1:] == '"':
+    if new_quote == good_docquote and new_body[-1:] == good_docquote[0]:
         # edge case:
-        new_body = new_body[:-1] + '\\"'
+        new_body = new_body[:-1] + f"\\{good_docquote[0]}"
     orig_escape_count = body.count("\\")
     new_escape_count = new_body.count("\\")
     if new_escape_count > orig_escape_count:
         return s  # Do not introduce more escaping
 
-    if new_escape_count == orig_escape_count and orig_quote == '"':
-        return s  # Prefer double quotes
+    if new_escape_count == orig_escape_count and orig_quote == good_quote:
+        return s  # Prefer the good quote
 
     return f"{prefix}{new_quote}{new_body}{new_quote}"
