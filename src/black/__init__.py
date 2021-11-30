@@ -1110,6 +1110,7 @@ def get_features_used(node: Node) -> Set[Feature]:
         elif n.type == token.COLONEQUAL:
             features.add(Feature.ASSIGNMENT_EXPRESSIONS)
 
+
         elif n.type == syms.decorator:
             if len(n.children) > 1 and not is_simple_decorator_expression(
                 n.children[1]
@@ -1250,6 +1251,7 @@ def nullcontext() -> Iterator[None]:
     To be used like `nullcontext` in Python 3.7.
     """
     yield
+
 
 
 def patch_click() -> None:
