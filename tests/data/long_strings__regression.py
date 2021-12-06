@@ -310,6 +310,221 @@ class Step(StepBase):
             passenger_association=passenger_association,
         )
 
+xxxxxxx_xxxxxx_xxxxxxx = xxx(
+    [
+        xxxxxxxxxxxx(
+            xxxxxx_xxxxxxx=(
+                '((x.aaaaaaaaa = "xxxxxx.xxxxxxxxxxxxxxxxxxxxx") || (x.xxxxxxxxx = "xxxxxxxxxxxx")) && '
+                # xxxxx xxxxxxxxxxxx xxxx xxx (xxxxxxxxxxxxxxxx) xx x xxxxxxxxx xx xxxxxx.
+                "(x.bbbbbbbbbbbb.xxx != "
+                '"xxx:xxx:xxx::cccccccccccc:xxxxxxx-xxxx/xxxxxxxxxxx/xxxxxxxxxxxxxxxxx") && '
+            )
+        )
+    ]
+)
+
+if __name__ == "__main__":
+    for i in range(4, 8):
+        cmd = (
+            r"for pid in $(ps aux | grep paster | grep -v grep | grep '\-%d' | awk '{print $2}'); do kill $pid; done"
+            % (i)
+        )
+
+def A():
+    def B():
+        def C():
+            def D():
+                def E():
+                    def F():
+                        def G():
+                            assert (
+                                c_float(val[0][0] / val[0][1]).value
+                                == c_float(value[0][0] / value[0][1]).value
+                            ), "%s didn't roundtrip" % tag
+
+class xxxxxxxxxxxxxxxxxxxxx(xxxx.xxxxxxxxxxxxx):
+    def xxxxxxx_xxxxxx(xxxx):
+        assert xxxxxxx_xxxx in [
+            x.xxxxx.xxxxxx.xxxxx.xxxxxx,
+            x.xxxxx.xxxxxx.xxxxx.xxxx,
+        ], ("xxxxxxxxxxx xxxxxxx xxxx (xxxxxx xxxx) %x xxx xxxxx" % xxxxxxx_xxxx)
+
+value.__dict__[
+    key
+] = "test"  # set some Thrift field to non-None in the struct aa bb cc dd ee
+
+RE_ONE_BACKSLASH = {
+    "asdf_hjkl_jkl": re.compile(
+        r"(?<!([0-9]\ ))(?<=(^|\ ))([A-Z]+(\ )?|[0-9](\ )|[a-z](\ )){4,7}([A-Z]|[0-9]|[a-z])($|\b)(?!(\ ?([0-9]\ )|(\.)))"
+    ),
+}
+
+RE_TWO_BACKSLASHES = {
+    "asdf_hjkl_jkl": re.compile(
+        r"(?<!([0-9]\ ))(?<=(^|\ ))([A-Z]+(\ )?|[0-9](\ )|[a-z](\\ )){4,7}([A-Z]|[0-9]|[a-z])($|\b)(?!(\ ?([0-9]\ )|(\.)))"
+    ),
+}
+
+RE_THREE_BACKSLASHES = {
+    "asdf_hjkl_jkl": re.compile(
+        r"(?<!([0-9]\ ))(?<=(^|\ ))([A-Z]+(\ )?|[0-9](\ )|[a-z](\\\ )){4,7}([A-Z]|[0-9]|[a-z])($|\b)(?!(\ ?([0-9]\ )|(\.)))"
+    ),
+}
+
+# We do NOT split on f-string expressions.
+print(f"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam. {[f'{i}' for i in range(10)]}")
+x = f"This is a long string which contains an f-expr that should not split {{{[i for i in range(5)]}}}."
+
+# The parens should NOT be removed in this case.
+(
+    "my very long string that should get formatted if I'm careful to make sure it goes"
+    " over 88 characters which it has now"
+)
+
+# The parens should NOT be removed in this case.
+(
+    "my very long string that should get formatted if I'm careful to make sure it goes over 88 characters which"
+    " it has now"
+)
+
+# The parens should NOT be removed in this case.
+(
+    "my very long string"
+    " that should get formatted"
+    " if I'm careful to make sure"
+    " it goes over 88 characters which"
+    " it has now"
+)
+
+
+def _legacy_listen_examples():
+    text += (
+        "    \"listen for the '%(event_name)s' event\"\n"
+        "\n    # ... (event logic logic logic) ...\n"
+        % {
+            "since": since,
+        }
+    )
+
+
+class X:
+    async def foo(self):
+        msg = ""
+        for candidate in CANDIDATES:
+            msg += (
+                "**{candidate.object_type} {candidate.rev}**"
+                " - {candidate.description}\n"
+            )
+
+
+temp_msg = (
+    f"{f'{humanize_number(pos)}.': <{pound_len+2}} "
+    f"{balance: <{bal_len + 5}} "
+    f"<<{author.display_name}>>\n"
+)
+
+assert str(suffix_arr) == (
+    "['$', 'angaroo$', 'angrykangaroo$', 'aroo$', 'garoo$', "
+    "'grykangaroo$', 'kangaroo$', 'ngaroo$', 'ngrykangaroo$', "
+    "'o$', 'oo$', 'roo$', 'rykangaroo$', 'ykangaroo$']"
+)
+assert str(suffix_arr) != (
+    "['$', 'angaroo$', 'angrykangaroo$', 'aroo$', 'garoo$', "
+    "'grykangaroo$', 'kangaroo$', 'ngaroo$', 'ngrykangaroo$', "
+    "'o$', 'oo$', 'roo$', 'rykangaroo$', 'ykangaroo$']"
+)
+assert str(suffix_arr) <= (
+    "['$', 'angaroo$', 'angrykangaroo$', 'aroo$', 'garoo$', "
+    "'grykangaroo$', 'kangaroo$', 'ngaroo$', 'ngrykangaroo$', "
+    "'o$', 'oo$', 'roo$', 'rykangaroo$', 'ykangaroo$']"
+)
+assert str(suffix_arr) >= (
+    "['$', 'angaroo$', 'angrykangaroo$', 'aroo$', 'garoo$', "
+    "'grykangaroo$', 'kangaroo$', 'ngaroo$', 'ngrykangaroo$', "
+    "'o$', 'oo$', 'roo$', 'rykangaroo$', 'ykangaroo$']"
+)
+assert str(suffix_arr) < (
+    "['$', 'angaroo$', 'angrykangaroo$', 'aroo$', 'garoo$', "
+    "'grykangaroo$', 'kangaroo$', 'ngaroo$', 'ngrykangaroo$', "
+    "'o$', 'oo$', 'roo$', 'rykangaroo$', 'ykangaroo$']"
+)
+assert str(suffix_arr) > (
+    "['$', 'angaroo$', 'angrykangaroo$', 'aroo$', 'garoo$', "
+    "'grykangaroo$', 'kangaroo$', 'ngaroo$', 'ngrykangaroo$', "
+    "'o$', 'oo$', 'roo$', 'rykangaroo$', 'ykangaroo$']"
+)
+assert str(suffix_arr) in "['$', 'angaroo$', 'angrykangaroo$', 'aroo$', 'garoo$', 'grykangaroo$', 'kangaroo$', 'ngaroo$', 'ngrykangaroo$', 'o$', 'oo$', 'roo$', 'rykangaroo$', 'ykangaroo$']"
+assert str(suffix_arr) not in "['$', 'angaroo$', 'angrykangaroo$', 'aroo$', 'garoo$', 'grykangaroo$', 'kangaroo$', 'ngaroo$', 'ngrykangaroo$', 'o$', 'oo$', 'roo$', 'rykangaroo$', 'ykangaroo$']"
+message = (
+    f"1. Go to Google Developers Console and log in with your Google account."
+    "(https://console.developers.google.com/)"
+    "2. You should be prompted to create a new project (name does not matter)."
+    "3. Click on Enable APIs and Services at the top."
+    "4. In the list of APIs choose or search for YouTube Data API v3 and "
+    "click on it. Choose Enable."
+    "5. Click on Credentials on the left navigation bar."
+    "6. Click on Create Credential at the top."
+    '7. At the top click the link for "API key".'
+    "8. No application restrictions are needed. Click Create at the bottom."
+    "9. You now have a key to add to `{prefix}set api youtube api_key`"
+)
+message = (
+    f"1. Go to Google Developers Console and log in with your Google account."
+    "(https://console.developers.google.com/)"
+    "2. You should be prompted to create a new project (name does not matter)."
+    f"3. Click on Enable APIs and Services at the top."
+    "4. In the list of APIs choose or search for YouTube Data API v3 and "
+    "click on it. Choose Enable."
+    f"5. Click on Credentials on the left navigation bar."
+    "6. Click on Create Credential at the top."
+    '7. At the top click the link for "API key".'
+    "8. No application restrictions are needed. Click Create at the bottom."
+    "9. You now have a key to add to `{prefix}set api youtube api_key`"
+)
+message = (
+    f"1. Go to Google Developers Console and log in with your Google account."
+    "(https://console.developers.google.com/)"
+    "2. You should be prompted to create a new project (name does not matter)."
+    f"3. Click on Enable APIs and Services at the top."
+    "4. In the list of APIs choose or search for YouTube Data API v3 and "
+    "click on it. Choose Enable."
+    f"5. Click on Credentials on the left navigation bar."
+    "6. Click on Create Credential at the top."
+    '7. At the top click the link for "API key".'
+    "8. No application restrictions are needed. Click Create at the bottom."
+    f"9. You now have a key to add to `{prefix}set api youtube api_key`"
+)
+
+# It shouldn't matter if the string prefixes are capitalized.
+temp_msg = (
+    F"{F'{humanize_number(pos)}.': <{pound_len+2}} "
+    F"{balance: <{bal_len + 5}} "
+    F"<<{author.display_name}>>\n"
+)
+
+fstring = (
+    F"We have to remember to escape {braces}."
+    " Like {these}."
+    F" But not {this}."
+)
+
+welcome_to_programming = R"hello," R" world!"
+
+fstring = F"f-strings definitely make things more {difficult} than they need to be for {{black}}. But boy they sure are handy. The problem is that some lines will need to have the 'f' whereas others do not. This {line}, for example, needs one."
+
+x = F"This is a long string which contains an f-expr that should not split {{{[i for i in range(5)]}}}."
+
+x = (
+    "\N{BLACK RIGHT-POINTING TRIANGLE WITH DOUBLE VERTICAL BAR}\N{VARIATION SELECTOR-16}"
+)
+
+xxxxxx_xxx_xxxx_xx_xxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxxxx_xxxx_xxxx_xxxxx = xxxx.xxxxxx.xxxxxxxxx.xxxxxxxxxxxxxxxxxxxx(
+    xx_xxxxxx={
+        "x3_xxxxxxxx": "xxx3_xxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxxxx_xxxxxxxx_xxxxxx_xxxxxxx",
+    },
+)
+
+
 # output
 
 
@@ -435,14 +650,12 @@ func_call_where_string_arg_has_method_call_and_bad_parens(
 
 func_call_where_string_arg_has_old_fmt_and_bad_parens(
     "A long string with {}. This string is so long that it is ridiculous. It can't fit"
-    " on one line at alllll."
-    % "formatting",
+    " on one line at alllll." % "formatting",
 )
 
 func_call_where_string_arg_has_old_fmt_and_bad_parens(
     "A long string with {}. This {} is so long that it is ridiculous. It can't fit on"
-    " one line at alllll."
-    % ("formatting", "string"),
+    " one line at alllll." % ("formatting", "string"),
 )
 
 
@@ -702,3 +915,252 @@ class Step(StepBase):
                 passenger_association=passenger_association,
             )
         )
+
+
+xxxxxxx_xxxxxx_xxxxxxx = xxx(
+    [
+        xxxxxxxxxxxx(
+            xxxxxx_xxxxxxx=(
+                '((x.aaaaaaaaa = "xxxxxx.xxxxxxxxxxxxxxxxxxxxx") || (x.xxxxxxxxx ='
+                ' "xxxxxxxxxxxx")) && '
+                # xxxxx xxxxxxxxxxxx xxxx xxx (xxxxxxxxxxxxxxxx) xx x xxxxxxxxx xx xxxxxx.
+                "(x.bbbbbbbbbbbb.xxx != "
+                '"xxx:xxx:xxx::cccccccccccc:xxxxxxx-xxxx/xxxxxxxxxxx/xxxxxxxxxxxxxxxxx") && '
+            )
+        )
+    ]
+)
+
+if __name__ == "__main__":
+    for i in range(4, 8):
+        cmd = (
+            r"for pid in $(ps aux | grep paster | grep -v grep | grep '\-%d' | awk"
+            r" '{print $2}'); do kill $pid; done" % (i)
+        )
+
+
+def A():
+    def B():
+        def C():
+            def D():
+                def E():
+                    def F():
+                        def G():
+                            assert (
+                                c_float(val[0][0] / val[0][1]).value
+                                == c_float(value[0][0] / value[0][1]).value
+                            ), "%s didn't roundtrip" % tag
+
+
+class xxxxxxxxxxxxxxxxxxxxx(xxxx.xxxxxxxxxxxxx):
+    def xxxxxxx_xxxxxx(xxxx):
+        assert xxxxxxx_xxxx in [
+            x.xxxxx.xxxxxx.xxxxx.xxxxxx,
+            x.xxxxx.xxxxxx.xxxxx.xxxx,
+        ], (
+            "xxxxxxxxxxx xxxxxxx xxxx (xxxxxx xxxx) %x xxx xxxxx" % xxxxxxx_xxxx
+        )
+
+
+value.__dict__[
+    key
+] = "test"  # set some Thrift field to non-None in the struct aa bb cc dd ee
+
+RE_ONE_BACKSLASH = {
+    "asdf_hjkl_jkl": re.compile(
+        r"(?<!([0-9]\ ))(?<=(^|\ ))([A-Z]+(\ )?|[0-9](\ )|[a-z](\ )){4,7}([A-Z]|[0-9]|[a-z])($|\b)(?!(\ ?([0-9]\ )|(\.)))"
+    ),
+}
+
+RE_TWO_BACKSLASHES = {
+    "asdf_hjkl_jkl": re.compile(
+        r"(?<!([0-9]\ ))(?<=(^|\ ))([A-Z]+(\ )?|[0-9](\ )|[a-z](\\"
+        r" )){4,7}([A-Z]|[0-9]|[a-z])($|\b)(?!(\ ?([0-9]\ )|(\.)))"
+    ),
+}
+
+RE_THREE_BACKSLASHES = {
+    "asdf_hjkl_jkl": re.compile(
+        r"(?<!([0-9]\ ))(?<=(^|\ ))([A-Z]+(\ )?|[0-9](\ )|[a-z](\\\ )){4,7}([A-Z]|[0-9]|[a-z])($|\b)(?!(\ ?([0-9]\ )|(\.)))"
+    ),
+}
+
+# We do NOT split on f-string expressions.
+print(
+    "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam."
+    f" {[f'{i}' for i in range(10)]}"
+)
+x = (
+    "This is a long string which contains an f-expr that should not split"
+    f" {{{[i for i in range(5)]}}}."
+)
+
+# The parens should NOT be removed in this case.
+(
+    "my very long string that should get formatted if I'm careful to make sure it goes"
+    " over 88 characters which it has now"
+)
+
+# The parens should NOT be removed in this case.
+(
+    "my very long string that should get formatted if I'm careful to make sure it goes"
+    " over 88 characters which it has now"
+)
+
+# The parens should NOT be removed in this case.
+(
+    "my very long string"
+    " that should get formatted"
+    " if I'm careful to make sure"
+    " it goes over 88 characters which"
+    " it has now"
+)
+
+
+def _legacy_listen_examples():
+    text += (
+        "    \"listen for the '%(event_name)s' event\"\n"
+        "\n    # ... (event logic logic logic) ...\n"
+        % {
+            "since": since,
+        }
+    )
+
+
+class X:
+    async def foo(self):
+        msg = ""
+        for candidate in CANDIDATES:
+            msg += (
+                "**{candidate.object_type} {candidate.rev}**"
+                " - {candidate.description}\n"
+            )
+
+
+temp_msg = (
+    f"{f'{humanize_number(pos)}.': <{pound_len+2}} "
+    f"{balance: <{bal_len + 5}} "
+    f"<<{author.display_name}>>\n"
+)
+
+assert (
+    str(suffix_arr)
+    == "['$', 'angaroo$', 'angrykangaroo$', 'aroo$', 'garoo$', "
+    "'grykangaroo$', 'kangaroo$', 'ngaroo$', 'ngrykangaroo$', "
+    "'o$', 'oo$', 'roo$', 'rykangaroo$', 'ykangaroo$']"
+)
+assert (
+    str(suffix_arr)
+    != "['$', 'angaroo$', 'angrykangaroo$', 'aroo$', 'garoo$', "
+    "'grykangaroo$', 'kangaroo$', 'ngaroo$', 'ngrykangaroo$', "
+    "'o$', 'oo$', 'roo$', 'rykangaroo$', 'ykangaroo$']"
+)
+assert (
+    str(suffix_arr)
+    <= "['$', 'angaroo$', 'angrykangaroo$', 'aroo$', 'garoo$', "
+    "'grykangaroo$', 'kangaroo$', 'ngaroo$', 'ngrykangaroo$', "
+    "'o$', 'oo$', 'roo$', 'rykangaroo$', 'ykangaroo$']"
+)
+assert (
+    str(suffix_arr)
+    >= "['$', 'angaroo$', 'angrykangaroo$', 'aroo$', 'garoo$', "
+    "'grykangaroo$', 'kangaroo$', 'ngaroo$', 'ngrykangaroo$', "
+    "'o$', 'oo$', 'roo$', 'rykangaroo$', 'ykangaroo$']"
+)
+assert (
+    str(suffix_arr)
+    < "['$', 'angaroo$', 'angrykangaroo$', 'aroo$', 'garoo$', "
+    "'grykangaroo$', 'kangaroo$', 'ngaroo$', 'ngrykangaroo$', "
+    "'o$', 'oo$', 'roo$', 'rykangaroo$', 'ykangaroo$']"
+)
+assert (
+    str(suffix_arr)
+    > "['$', 'angaroo$', 'angrykangaroo$', 'aroo$', 'garoo$', "
+    "'grykangaroo$', 'kangaroo$', 'ngaroo$', 'ngrykangaroo$', "
+    "'o$', 'oo$', 'roo$', 'rykangaroo$', 'ykangaroo$']"
+)
+assert (
+    str(suffix_arr)
+    in "['$', 'angaroo$', 'angrykangaroo$', 'aroo$', 'garoo$', 'grykangaroo$',"
+    " 'kangaroo$', 'ngaroo$', 'ngrykangaroo$', 'o$', 'oo$', 'roo$', 'rykangaroo$',"
+    " 'ykangaroo$']"
+)
+assert (
+    str(suffix_arr)
+    not in "['$', 'angaroo$', 'angrykangaroo$', 'aroo$', 'garoo$', 'grykangaroo$',"
+    " 'kangaroo$', 'ngaroo$', 'ngrykangaroo$', 'o$', 'oo$', 'roo$',"
+    " 'rykangaroo$', 'ykangaroo$']"
+)
+message = (
+    f"1. Go to Google Developers Console and log in with your Google account."
+    f"(https://console.developers.google.com/)"
+    f"2. You should be prompted to create a new project (name does not matter)."
+    f"3. Click on Enable APIs and Services at the top."
+    f"4. In the list of APIs choose or search for YouTube Data API v3 and "
+    f"click on it. Choose Enable."
+    f"5. Click on Credentials on the left navigation bar."
+    f"6. Click on Create Credential at the top."
+    f'7. At the top click the link for "API key".'
+    f"8. No application restrictions are needed. Click Create at the bottom."
+    f"9. You now have a key to add to `{{prefix}}set api youtube api_key`"
+)
+message = (
+    f"1. Go to Google Developers Console and log in with your Google account."
+    f"(https://console.developers.google.com/)"
+    f"2. You should be prompted to create a new project (name does not matter)."
+    f"3. Click on Enable APIs and Services at the top."
+    f"4. In the list of APIs choose or search for YouTube Data API v3 and "
+    f"click on it. Choose Enable."
+    f"5. Click on Credentials on the left navigation bar."
+    f"6. Click on Create Credential at the top."
+    f'7. At the top click the link for "API key".'
+    f"8. No application restrictions are needed. Click Create at the bottom."
+    f"9. You now have a key to add to `{{prefix}}set api youtube api_key`"
+)
+message = (
+    "1. Go to Google Developers Console and log in with your Google account."
+    "(https://console.developers.google.com/)"
+    "2. You should be prompted to create a new project (name does not matter)."
+    "3. Click on Enable APIs and Services at the top."
+    "4. In the list of APIs choose or search for YouTube Data API v3 and "
+    "click on it. Choose Enable."
+    "5. Click on Credentials on the left navigation bar."
+    "6. Click on Create Credential at the top."
+    '7. At the top click the link for "API key".'
+    "8. No application restrictions are needed. Click Create at the bottom."
+    f"9. You now have a key to add to `{prefix}set api youtube api_key`"
+)
+
+# It shouldn't matter if the string prefixes are capitalized.
+temp_msg = (
+    f"{F'{humanize_number(pos)}.': <{pound_len+2}} "
+    f"{balance: <{bal_len + 5}} "
+    f"<<{author.display_name}>>\n"
+)
+
+fstring = f"We have to remember to escape {braces}. Like {{these}}. But not {this}."
+
+welcome_to_programming = R"hello," R" world!"
+
+fstring = (
+    f"f-strings definitely make things more {difficult} than they need to be for"
+    " {black}. But boy they sure are handy. The problem is that some lines will need"
+    f" to have the 'f' whereas others do not. This {line}, for example, needs one."
+)
+
+x = (
+    "This is a long string which contains an f-expr that should not split"
+    f" {{{[i for i in range(5)]}}}."
+)
+
+x = (
+    "\N{BLACK RIGHT-POINTING TRIANGLE WITH DOUBLE VERTICAL BAR}\N{VARIATION SELECTOR-16}"
+)
+
+xxxxxx_xxx_xxxx_xx_xxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxxxx_xxxx_xxxx_xxxxx = xxxx.xxxxxx.xxxxxxxxx.xxxxxxxxxxxxxxxxxxxx(
+    xx_xxxxxx={
+        "x3_xxxxxxxx": (
+            "xxx3_xxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxxxx_xxxxxxxx_xxxxxx_xxxxxxx"
+        ),
+    },
+)

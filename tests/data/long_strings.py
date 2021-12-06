@@ -207,6 +207,38 @@ long_unmergable_string_with_pragma = (
     " of it."
 )
 
+string_with_nameescape = (
+    "........................................................................ \N{LAO KO LA}"
+)
+
+string_with_nameescape = (
+    "........................................................................... \N{LAO KO LA}"
+)
+
+string_with_nameescape = (
+    "............................................................................ \N{LAO KO LA}"
+)
+
+string_with_nameescape_and_escaped_backslash = (
+    "...................................................................... \\\N{LAO KO LA}"
+)
+
+string_with_nameescape_and_escaped_backslash = (
+    "......................................................................... \\\N{LAO KO LA}"
+)
+
+string_with_nameescape_and_escaped_backslash = (
+    ".......................................................................... \\\N{LAO KO LA}"
+)
+
+string_with_escaped_nameescape = (
+    "........................................................................ \\N{LAO KO LA}"
+)
+
+string_with_escaped_nameescape = (
+    "........................................................................... \\N{LAO KO LA}"
+)
+
 
 # output
 
@@ -380,8 +412,7 @@ fmt_string2 = "But what about when the string is {} but {}".format(
 
 old_fmt_string1 = (
     "While we are on the topic of %s, we should also note that old-style formatting"
-    " must also be preserved, since some %s still uses it."
-    % ("formatting", "code")
+    " must also be preserved, since some %s still uses it." % ("formatting", "code")
 )
 
 old_fmt_string2 = "This is a %s %s %s %s" % (
@@ -448,8 +479,7 @@ assert some_type_of_boolean_expression, (
 
 assert some_type_of_boolean_expression, (
     "Followed by a really really really long string that is used to provide context to"
-    " the AssertionError exception, which uses dynamic string %s."
-    % "formatting"
+    " the AssertionError exception, which uses dynamic string %s." % "formatting"
 )
 
 assert some_type_of_boolean_expression, (
@@ -588,4 +618,44 @@ long_unmergable_string_with_pragma = (
 long_unmergable_string_with_pragma = (
     "This is a really long string that can't be merged because it has a likely pragma at the end"  # pylint: disable=some-pylint-check
     " of it."
+)
+
+string_with_nameescape = (
+    "........................................................................"
+    " \N{LAO KO LA}"
+)
+
+string_with_nameescape = (
+    "..........................................................................."
+    " \N{LAO KO LA}"
+)
+
+string_with_nameescape = (
+    "............................................................................"
+    " \N{LAO KO LA}"
+)
+
+string_with_nameescape_and_escaped_backslash = (
+    "......................................................................"
+    " \\\N{LAO KO LA}"
+)
+
+string_with_nameescape_and_escaped_backslash = (
+    "........................................................................."
+    " \\\N{LAO KO LA}"
+)
+
+string_with_nameescape_and_escaped_backslash = (
+    ".........................................................................."
+    " \\\N{LAO KO LA}"
+)
+
+string_with_escaped_nameescape = (
+    "........................................................................ \\N{LAO"
+    " KO LA}"
+)
+
+string_with_escaped_nameescape = (
+    "..........................................................................."
+    " \\N{LAO KO LA}"
 )

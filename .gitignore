@@ -1,4 +1,6 @@
+.venv
 .coverage
+.coverage.*
 _build
 .DS_Store
 .vscode
@@ -15,3 +17,5 @@ src/_black_version.py
 .dmypy.json
 *.swp
 .hypothesis/
+venv/
+.ipynb_checkpoints/

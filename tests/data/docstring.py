@@ -102,6 +102,27 @@ def and_this():
   "hey yah"'''
 
 
+def multiline_whitespace():
+    '''
+    
+    
+    
+    
+    '''
+
+
+def oneline_whitespace():
+    '''      '''
+
+
+def empty():
+    """"""
+
+
+def single_quotes():
+    'testing'
+
+
 def believe_it_or_not_this_is_in_the_py_stdlib(): ''' 
 "hey yah"'''
 
@@ -109,6 +130,63 @@ def believe_it_or_not_this_is_in_the_py_stdlib(): '''
 def ignored_docstring():
     """a => \
 b"""  
+
+def single_line_docstring_with_whitespace():
+    """   This should be stripped """
+
+def docstring_with_inline_tabs_and_space_indentation():
+    """hey
+
+    tab	separated	value
+    	tab at start of line and then a tab	separated	value
+    				multiple tabs at the beginning	and	inline
+    	 	  	mixed tabs and spaces at beginning. next line has mixed tabs and spaces only.
+    			 	  		
+    line ends with some tabs		
+    """
+
+
+def docstring_with_inline_tabs_and_tab_indentation():
+	"""hey
+
+	tab	separated	value
+		tab at start of line and then a tab	separated	value
+					multiple tabs at the beginning	and	inline
+		 	  	mixed tabs and spaces at beginning. next line has mixed tabs and spaces only.
+				 	  		
+	line ends with some tabs		
+	"""
+	pass
+
+
+def backslash_space():
+    """\ """
+
+
+def multiline_backslash_1():
+  '''
+  hey\there\
+  \ '''
+
+
+def multiline_backslash_2():
+  '''
+  hey there \ '''
+
+
+def multiline_backslash_3():
+  '''
+  already escaped \\ '''
+
+
+def my_god_its_full_of_stars_1():
+    "I'm sorry Dave\u2001"
+
+
+# the space below is actually a \u2001, removed in output
+def my_god_its_full_of_stars_2():
+    "I'm sorry Dave "
+
 
 # output
 
@@ -215,6 +293,22 @@ def and_this():
     "hey yah"'''
 
 
+def multiline_whitespace():
+    """ """
+
+
+def oneline_whitespace():
+    """ """
+
+
+def empty():
+    """"""
+
+
+def single_quotes():
+    "testing"
+
+
 def believe_it_or_not_this_is_in_the_py_stdlib():
     '''
     "hey yah"'''
@@ -223,3 +317,61 @@ def believe_it_or_not_this_is_in_the_py_stdlib():
 def ignored_docstring():
     """a => \
 b"""
+
+
+def single_line_docstring_with_whitespace():
+    """This should be stripped"""
+
+
+def docstring_with_inline_tabs_and_space_indentation():
+    """hey
+
+    tab	separated	value
+        tab at start of line and then a tab	separated	value
+                                multiple tabs at the beginning	and	inline
+                        mixed tabs and spaces at beginning. next line has mixed tabs and spaces only.
+
+    line ends with some tabs
+    """
+
+
+def docstring_with_inline_tabs_and_tab_indentation():
+    """hey
+
+    tab	separated	value
+            tab at start of line and then a tab	separated	value
+                                    multiple tabs at the beginning	and	inline
+                            mixed tabs and spaces at beginning. next line has mixed tabs and spaces only.
+
+    line ends with some tabs
+    """
+    pass
+
+
+def backslash_space():
+    """\ """
+
+
+def multiline_backslash_1():
+    """
+  hey\there\
+  \ """
+
+
+def multiline_backslash_2():
+    """
+    hey there \ """
+
+
+def multiline_backslash_3():
+    """
+    already escaped \\"""
+
+
+def my_god_its_full_of_stars_1():
+    "I'm sorry Dave\u2001"
+
+
+# the space below is actually a \u2001, removed in output
+def my_god_its_full_of_stars_2():
+    "I'm sorry Dave"

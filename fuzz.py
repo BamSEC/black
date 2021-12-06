@@ -5,10 +5,13 @@ generation.  You can run this file with `python`, `pytest`, or (soon)
 a coverage-guided fuzzer I'm working on.
 """
 
+import re
+
 import hypothesmith
 from hypothesis import HealthCheck, given, settings, strategies as st
 
 import black
+from blib2to3.pgen2.tokenize import TokenError
 
 
 # This test uses the Hypothesis and Hypothesmith libraries to generate random
@@ -42,10 +45,20 @@ def test_idempotent_any_syntatically_valid_python(
     try:
         dst_contents = black.format_str(src_contents, mode=mode)
     except black.InvalidInput:
-        # This is a bug - if it's valid Python code, as above, black should be
-        # able to code with it.  See issues #970, #1012, #1358, and #1557.
+        # This is a bug - if it's valid Python code, as above, Black should be
+        # able to cope with it.  See issues #970, #1012, #1358, and #1557.
         # TODO: remove this try-except block when issues are resolved.
         return
+    except TokenError as e:
+        if (  # Special-case logic for backslashes followed by newlines or end-of-input
+            e.args[0] == "EOF in multi-line statement"
+            and re.search(r"\\($|\r?\n)", src_contents) is not None
+        ):
+            # This is a bug - if it's valid Python code, as above, Black should be
+            # able to cope with it.  See issue #1012.
+            # TODO: remove this block when the issue is resolved.
+            return
+        raise
 
     # And check that we got equivalent and stable output.
     black.assert_equivalent(src_contents, dst_contents)
@@ -56,4 +69,17 @@ def test_idempotent_any_syntatically_valid_python(
 
 
 if __name__ == "__main__":
+    # Run tests, including shrinking and reporting any known failures.
     test_idempotent_any_syntatically_valid_python()
+
+    # If Atheris is available, run coverage-guided fuzzing.
+    # (if you want only bounded fuzzing, just use `pytest fuzz.py`)
+    try:
+        import sys
+        import atheris
+    except ImportError:
+        pass
+    else:
+        test = test_idempotent_any_syntatically_valid_python
+        atheris.Setup(sys.argv, test.hypothesis.fuzz_one_input)
+        atheris.Fuzz()
