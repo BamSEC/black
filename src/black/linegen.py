@@ -5,8 +5,6 @@ from functools import partial, wraps
 import sys
 from typing import Collection, Iterator, List, Optional, Set, Union
 
-from dataclasses import dataclass, field
-
 from black.nodes import WHITESPACE, RARROW, STATEMENT, STANDALONE_COMMENT
 from black.nodes import ASSIGNMENTS, OPENING_BRACKETS, CLOSING_BRACKETS
 from black.nodes import Visitor, syms, first_child_is_arith, ensure_visible
@@ -40,7 +38,8 @@ class CannotSplit(CannotTransform):
     """A readable split that fits the allotted line length is impossible."""
 
 
-@dataclass
+# This isn't a dataclass because @dataclass + Generic breaks mypyc.
+# See also https://github.com/mypyc/mypyc/issues/827.
 class LineGenerator(Visitor[Line]):
     """Generates reformatted Line objects.  Empty lines are not emitted.
 
@@ -48,9 +47,11 @@ class LineGenerator(Visitor[Line]):
     in ways that will no longer stringify to valid Python code on the tree.
     """
 
-    mode: Mode
-    remove_u_prefix: bool = False
-    current_line: Line = field(init=False)
+    def __init__(self, mode: Mode, remove_u_prefix: bool = False) -> None:
+        self.mode = mode
+        self.remove_u_prefix = remove_u_prefix
+        self.current_line: Line
+        self.__post_init__()
 
     def line(self, indent: int = 0) -> Iterator[Line]:
         """Generate a line.
@@ -126,7 +127,7 @@ class LineGenerator(Visitor[Line]):
         """Visit a statement.
 
         This implementation is shared for `if`, `while`, `for`, `try`, `except`,
-        `def`, `with`, `class`, `assert` and assignments.
+        `def`, `with`, `class`, `assert`, and assignments.
 
         The relevant Python language `keywords` for a given statement will be
         NAME leaves within it. This methods puts those on a separate line.
@@ -139,6 +140,14 @@ class LineGenerator(Visitor[Line]):
             if child.type == token.NAME and child.value in keywords:  # type: ignore
                 yield from self.line()
 
+            yield from self.visit(child)
+
+    def visit_match_case(self, node: Node) -> Iterator[Line]:
+        """Visit either a match or case statement."""
+        normalize_invisible_parens(node, parens_after=set())
+
+        yield from self.line()
+        for child in node.children:
             yield from self.visit(child)
 
     def visit_suite(self, node: Node) -> Iterator[Line]:
@@ -292,6 +301,10 @@ class LineGenerator(Visitor[Line]):
         self.visit_async_funcdef = self.visit_async_stmt
         self.visit_decorated = self.visit_decorators
 
+        # PEP 634
+        self.visit_match_stmt = self.visit_match_case
+        self.visit_case_block = self.visit_match_case
+
 
 def transform_line(
     line: Line, mode: Mode, features: Collection[Feature] = ()
@@ -335,7 +348,9 @@ def transform_line(
         transformers = [left_hand_split]
     else:
 
-        def rhs(line: Line, features: Collection[Feature]) -> Iterator[Line]:
+        def _rhs(
+            self: object, line: Line, features: Collection[Feature]
+        ) -> Iterator[Line]:
             """Wraps calls to `right_hand_split`.
 
             The calls increasingly `omit` right-hand trailers (bracket pairs with
@@ -361,6 +376,12 @@ def transform_line(
             yield from right_hand_split(
                 line, line_length=mode.line_length, features=features
             )
+
+        # HACK: nested functions (like _rhs) compiled by mypyc don't retain their
+        # __name__ attribute which is needed in `run_transformer` further down.
+        # Unfortunately a nested class breaks mypyc too. So a class must be created
+        # via type ... https://github.com/mypyc/mypyc/issues/884
+        rhs = type("rhs", (), {"__call__": _rhs})()
 
         if mode.experimental_string_processing:
             if line.inside_brackets:
@@ -503,14 +524,14 @@ def right_hand_split(
             yield from right_hand_split(line, line_length, features=features, omit=omit)
             return
 
-        except CannotSplit:
+        except CannotSplit as e:
             if not (
                 can_be_split(body)
                 or is_line_short_enough(body, line_length=line_length)
             ):
                 raise CannotSplit(
                     "Splitting failed, body is still too long and can't be split."
-                )
+                ) from e
 
             elif head.contains_multiline_strings() or tail.contains_multiline_strings():
                 raise CannotSplit(
@@ -518,7 +539,7 @@ def right_hand_split(
                     " satisfy the splitting algorithm because the head or the tail"
                     " contains multiline strings which by definition never fit one"
                     " line."
-                )
+                ) from e
 
     ensure_visible(opening_bracket)
     ensure_visible(closing_bracket)
@@ -635,13 +656,13 @@ def delimiter_split(line: Line, features: Collection[Feature] = ()) -> Iterator[
     try:
         last_leaf = line.leaves[-1]
     except IndexError:
-        raise CannotSplit("Line empty")
+        raise CannotSplit("Line empty") from None
 
     bt = line.bracket_tracker
     try:
         delimiter_priority = bt.max_delimiter_priority(exclude={id(last_leaf)})
     except ValueError:
-        raise CannotSplit("No delimiters found")
+        raise CannotSplit("No delimiters found") from None
 
     if delimiter_priority == DOT_PRIORITY:
         if bt.delimiter_count_with_priority(delimiter_priority) == 1:
@@ -976,7 +997,7 @@ def run_transformer(
         result.extend(transform_line(transformed_line, mode=mode, features=features))
 
     if (
-        transform.__name__ != "rhs"
+        transform.__class__.__name__ != "rhs"
         or not line.bracket_tracker.invisible
         or any(bracket.value for bracket in line.bracket_tracker.invisible)
         or line.contains_multiline_strings()
